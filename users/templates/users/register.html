@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" class="form">
+            {% csrf_token %}
+
+            <fieldset class="form-group">
+                <legend class="border-bottom"></legend>
+                {% bootstrap_form form %}
+            </fieldset>
+            {% buttons %}
+                {% bootstrap_button "Sign Up" button_type="submit" button_class="btn-outline-info" %}
+            {% endbuttons %}
+        </form>
+
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="#">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock %}
