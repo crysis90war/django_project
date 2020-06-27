@@ -11,8 +11,18 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Login</a>
-                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
+                    {% endif %}
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">Mon profile</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Se déconnecter</a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Se connecter</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">S'inscrire</a>
+                {% endif %}
+
             </div>
         </div>
     </div>
