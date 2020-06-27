@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" class="form">
+            {% csrf_token %}
+
+            <fieldset class="form-group">
+                <legend class="border-bottom">Blog Post</legend>
+                {% bootstrap_form form %}
+            </fieldset>
+            {% buttons %}
+                {% bootstrap_button "Créer" button_type="submit" button_class="btn-outline-info" %}
+            {% endbuttons %}
+        </form>
+    </div>
+{% endblock %}

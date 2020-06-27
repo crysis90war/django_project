@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" class="form">
+            {% csrf_token %}
+
+            <fieldset class="form-group">
+                <legend class="border-bottom">
+                    <div class="alert alert-danger" role="alert">
+                        Suppression de "{{ object.title }}"
+                    </div>
+                </legend>
+                <h3>
+                    <div class="alert alert-light" role="alert">
+                        Êtes-vous sûre de vouloir supprimer ce post ?
+                    </div>
+                </h3>
+            </fieldset>
+
+            {% buttons %}
+                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                <a class="btn btn-outline-secondary" href="{% url 'post-detail' object.id %}">Cancel</a>
+            {% endbuttons %}
+        </form>
+    </div>
+{% endblock %}
